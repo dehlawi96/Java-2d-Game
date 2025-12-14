@@ -15,6 +15,7 @@ public class GamePanel extends JPanel implements Runnable {
         final int screenWidth = tileSize * maxScreenCol;
         final int screenHeight = tileSize * maxScreenRow;
 
+
         public GamePanel() {
 
             this.setPreferredSize(new Dimension(screenWidth, screenHeight));
