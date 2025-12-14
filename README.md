@@ -18,10 +18,3 @@ The game is structured with clear packages and uses a Maven build system for eas
 * Keyboard input handling
 * Simple game mechanics
 * Cross-platform — runs wherever Java runs
-
-_(Future enhancements you might add: sound effects, sprite animations, improved UI, levels, scoring, etc.)_
-
----
-
-## 📁 Repository Contents
-
