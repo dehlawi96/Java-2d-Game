@@ -74,7 +74,6 @@ public class Player extends  Entity {
                 spriteCounter = 0;
             }
         }
-
     }
     public void draw(Graphics g2d) {
 
