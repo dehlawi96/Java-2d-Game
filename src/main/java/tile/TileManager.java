@@ -4,20 +4,55 @@ import com.LoL.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 public class TileManager {
 
     GamePanel gp;
     Tile[] tiles;
+    int mapTileNum[][];
+
     public TileManager(GamePanel gp) {
 
         this.gp = gp;
         tiles = new Tile[10];
         getTileImage();
+        mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
+        loadMap("/maps/map01.txt");
     }
 
+    public void loadMap(String filePath) {
+
+        try {
+
+            InputStream is = getClass().getResourceAsStream(filePath);
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+            int col = 0;
+            int row = 0;
+
+            while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
+
+                String line = br.readLine();
+
+                while (col < gp.maxScreenCol) {
+
+                    String numbers[] = line.split(" ");
+
+                    int num = Integer.parseInt(numbers[col]);
+                    mapTileNum[col][row] = num;
+                    col++;
+                }
+                if (col == gp.maxScreenCol) {
+                    col = 0;
+                    row++;
+                }
+            }
+            br.close();
+        }catch (Exception e) {
+
+        }
+    }
     public void getTileImage() {
 
         try {
@@ -44,7 +79,9 @@ public class TileManager {
 
         while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
 
-            g2d.drawImage(tiles[0].image, x, y, gp.tileSize, gp.tileSize, null);
+            int tileNum = mapTileNum[col][row];
+
+            g2d.drawImage(tiles[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
             col++;
             x += gp.tileSize;
 
