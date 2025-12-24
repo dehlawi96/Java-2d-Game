@@ -9,8 +9,8 @@ import java.io.*;
 public class TileManager {
 
     GamePanel gp;
-    Tile[] tiles;
-    int mapTileNum[][];
+    public Tile[] tiles;
+    public int mapTileNum[][];
 
     public TileManager(GamePanel gp) {
 
